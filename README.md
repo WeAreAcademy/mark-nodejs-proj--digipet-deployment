@@ -14,7 +14,7 @@ Now we'll deploy your Digipet (both frontend and backend), so that others can in
 
 > 🎯 **Success criterion:** you can run your compiled _JavaScript_ digipet server locally
 
-We've written our server in TypeScript and we've been running it locally using `ts-node` - which effectively compiles our TypeScript into JavaScript for us.
+In a previous project, we wrote our digipet server in TypeScript and we've been running it locally using `ts-node` - which effectively compiles our TypeScript into JavaScript for us.
 
 This is fine for development, but in deployment we would typically separate out this 'build' and 'start' process.
 
@@ -47,7 +47,7 @@ Now, test that you can run your compiled JavaScript locally:
 
 > 🎯 **Success criterion:** you can run your compiled server locally with Heroku
 
-We'll be deploying our server to Heroku, a platform which offers support for free deployment of Node.js servers (amongst other types of apps).
+We'll be deploying our _existing_ Digipet server to Heroku, a platform which offers support for free deployment of Node.js servers (amongst other types of apps).
 
 To do this, we'll need to complete a couple of prerequisites listed in [the Heroku guide for deploying Node.js apps](https://devcenter.heroku.com/articles/deploying-nodejs#prerequisites):
 
@@ -78,6 +78,8 @@ web: node dist
 ```
 
 and the first warning will disappear.
+
+(An example is included in this repository.)
 
 ## Exercise 2: Deploying backend to Heroku
 
@@ -115,3 +117,13 @@ and you should be able to then hit all the associated endpoints from that deploy
 - `https://some-slug-12345.herokuapp.com/digipet/hatch`
 
 from any client of your choice: Postman, your browser, or your frontend app running on `localhost:3000` (pointing it to this new URL instead of `localhost:4000`).
+
+## Exercise 3: Deploying frontend, pointing to deployed backend
+
+> 🎯 **Success criterion:** you have a deployed frontend which connects to your deployed backend - so anybody can interact with your deployed digipet game
+
+You should be able to point your React frontend to your deployed digipet backend, instead of `localhost:4000`.
+
+After you've done this, you can deploy your React frontend to a service of your choice (e.g. Netlify).
+
+Now you've got a full-stack deployed Digipet game! 🐱
