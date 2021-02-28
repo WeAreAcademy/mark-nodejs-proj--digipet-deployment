@@ -23,13 +23,25 @@ We'll do this locally by:
 1. Adding a `build` script to compile our TypeScript to JavaScript
 2. Changing our `start` script to use `node` to run our compiled JavaScript
 
-3. Clone/fork the repo
-4. Take some time to read and digest the code
-5. Explore and run the tests
-6. Play around with it via Postman
-7. Google things that you don't understand
-8. Experiment with changing things
-9. Produce a narrative document
+`tsc` is used to compile TypeScript to JavaScript.
+
+The `tsconfig.json` provided in your digipet backend starter has `dist` set as the target compilation directory (`outDir`) for the resultant JavaScript, which means we should add the following scripts:
+
+```diff
+"scripts": {
+-  "start": "ts-node src",
++  "start": "node dist",
+   "start:dev": "ts-node-dev src",
++  "build": "tsc",
+   "test": "jest",
+   "test:watch": "jest --watch"
+},
+```
+
+Now, test that you can run your compiled JavaScript locally:
+
+1. `yarn build` to compile to JavaScript
+2. `yarn start` to run the compiled JavaScript
 
 ## Exercise 1b: Making sense of the system and its units
 
