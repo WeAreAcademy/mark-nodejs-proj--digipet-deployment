@@ -78,3 +78,40 @@ web: node dist
 ```
 
 and the first warning will disappear.
+
+## Exercise 2: Deploying backend to Heroku
+
+> 🎯 **Success criterion:** you have a deployed backend to Heroku (and can make requests to it via Postman and your browser)
+
+We'll now [deploy your server to Heroku](https://devcenter.heroku.com/articles/deploying-nodejs#deploy-your-application-to-heroku), so that it's running and is accessible to anybody through the browser!
+
+**1. Create a Heroku project**
+
+Run `heroku create` in the root of your project. This will:
+
+1. Create an empty application and git repoistory on Heroku
+2. Add the git repository on Heroku as a remote to your project, called `heroku`
+
+Then, make sure all your changes are committed to git on your `main` branch.
+
+We'll then run:
+
+```bash
+git push heroku main
+```
+
+which pushes your `main` branch to the Heroku remote git repository, where it will automatically trigger the `build` and then `start` scripts.
+
+It'll tell you that you've been successful:
+
+```
+https://some-slug-12345.herokuapp.com/ deployed to Heroku
+```
+
+and you should be able to then hit all the associated endpoints from that deployed server url, e.g.:
+
+- `https://some-slug-12345.herokuapp.com/instructions`
+- `https://some-slug-12345.herokuapp.com/digipet`
+- `https://some-slug-12345.herokuapp.com/digipet/hatch`
+
+from any client of your choice: Postman, your browser, or your frontend app running on `localhost:3000` (pointing it to this new URL instead of `localhost:4000`).
