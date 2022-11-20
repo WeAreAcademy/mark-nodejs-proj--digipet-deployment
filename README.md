@@ -8,7 +8,13 @@ Now we'll deploy your Digipet (both frontend and backend), so that others can in
 
 ## Learning Outcomes
 
-- Deploy a Node.js server to Heroku
+- Deploy a Node.js server to render.com
+
+## Pre-reqs:
+
+* you have completed a previous exercise to deploy a guestbook app to render.com and have an account there.
+* your digipet backend repo is ready on github
+
 
 ## Exercise 0: Running your compiled JavaScript server
 
@@ -43,78 +49,25 @@ Now, test that you can run your compiled JavaScript locally:
 1. `yarn build` to compile to JavaScript
 2. `yarn start` to run the compiled JavaScript
 
-## Exercise 1: Installing Heroku
 
-> 🎯 **Success criterion:** you can run your compiled server locally with Heroku
+## Exercise 1: Deploying backend to render.com
 
-We'll be deploying our _existing_ Digipet server to Heroku, a platform which offers support for free deployment of Node.js servers (amongst other types of apps).
+> 🎯 **Success criterion:** you have a deployed backend to render.com (and can make requests to it via Postman and your browser)
 
-To do this, we'll need to complete a couple of prerequisites listed in [the Heroku guide for deploying Node.js apps](https://devcenter.heroku.com/articles/deploying-nodejs#prerequisites):
 
-- [x] Node.js and npm installed
-- [x] an existing Node.js app
-- [ ] a free [Heroku account](https://signup.heroku.com/dc)
-- [ ] the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+Follow the deployment stage of the guestbook exercise, but this time for your digipet back-end repo.
 
-(When following the guide for Heroku CLI, you should log in through the CLI to your Heroku account that you just created. You don't need to create a Heroku app just yet.)
-
-After this, you should be able to run your app locally via the Heroku CLI with `heroku local web` (as documented [here](<(https://devcenter.heroku.com/articles/deploying-nodejs#build-your-app-and-run-it-locally)>)).
-
-### Optional - creating a `Procfile`
-
-You may see the following messages when you do this:
+Once successful you should have a URL with this sort of format:
 
 ```
-[WARN] ENOENT: no such file or directory, open 'Procfile'
-[OKAY] package.json file found - trying 'npm start'
-```
-
-This is because Heroku, [by default, looks for start instructions in a file called `Procfile`, then falls back on the `package.json` `start` script](https://devcenter.heroku.com/articles/deploying-nodejs#specifying-a-start-script). We haven't created a Procfile (hence the first warning), but we have got a `start` script in our `package.json`, so it falls back to that.
-
-If you want to, you can create a `Procfile` (that's the file name, it has no file extension) in the root of your project with the following content (essentially, identical to our `start` script):
-
-```
-web: node dist
-```
-
-and the first warning will disappear.
-
-(An example is included in this repository.)
-
-## Exercise 2: Deploying backend to Heroku
-
-> 🎯 **Success criterion:** you have a deployed backend to Heroku (and can make requests to it via Postman and your browser)
-
-We'll now [deploy your server to Heroku](https://devcenter.heroku.com/articles/deploying-nodejs#deploy-your-application-to-heroku), so that it's running and is accessible to anybody through the browser!
-
-**1. Create a Heroku project**
-
-Run `heroku create` in the root of your project. This will:
-
-1. Create an empty application and git repoistory on Heroku
-2. Add the git repository on Heroku as a remote to your project, called `heroku`
-
-Then, make sure all your changes are committed to git on your `main` branch.
-
-We'll then run:
-
-```bash
-git push heroku main
-```
-
-which pushes your `main` branch to the Heroku remote git repository, where it will automatically trigger the `build` and then `start` scripts.
-
-It'll tell you that you've been successful:
-
-```
-https://some-slug-12345.herokuapp.com/ deployed to Heroku
+https://some-slug-12345.onrender.com/
 ```
 
 and you should be able to then hit all the associated endpoints from that deployed server url, e.g.:
 
-- `https://some-slug-12345.herokuapp.com/instructions`
-- `https://some-slug-12345.herokuapp.com/digipet`
-- `https://some-slug-12345.herokuapp.com/digipet/hatch`
+- `https://some-slug-12345.onrender.com/instructions`
+- `https://some-slug-12345.onrender.com/digipet`
+- `https://some-slug-12345.onrender.com/digipet/hatch`
 
 from any client of your choice: Postman, your browser, or your frontend app running on `localhost:3000` (pointing it to this new URL instead of `localhost:4000`).
 
@@ -125,5 +78,7 @@ from any client of your choice: Postman, your browser, or your frontend app runn
 You should be able to point your React frontend to your deployed digipet backend, instead of `localhost:4000`.
 
 After you've done this, you can deploy your React frontend to a service of your choice (e.g. Netlify).
+
+(One tidy way to have this automatically appropriately switch from, say, localhost:4000 to your deployed back-end is described in the material: fullstack-todo-app.)
 
 Now you've got a full-stack deployed Digipet game! 🐱
